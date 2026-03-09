@@ -25,7 +25,7 @@ public class showCalculator {
 
     try {
         // 1. Connect to Database (Replace with your credentials)
-        Connection con = DriverManager.getConnection("jdbc:postgresql://192.168.1.60:5432/webuser", "postgres", "postgres");
+        Connection con = DriverManager.getConnection("jdbc:postgresql://DBhost/database_name", "username", "password");
         Statement st = con.createStatement();
         
         // 2. Extract Data

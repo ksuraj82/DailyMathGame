@@ -13,24 +13,52 @@ public class MathGamePanel extends JPanel{
 	private static final long serialVersionUID = 1L;
 	private int num1, num2, correctAnswer;
     private String operator;
-    private JLabel questionLabel, resultLabel;
+    private JLabel questionLabel, resultLabel, userName, instructionLabel;
     private JTextField answerField;
 
-    public MathGamePanel(String operator) {
+    public MathGamePanel(String operator, String gamerName) {
         this.operator = operator;
 
-        setLayout(new FlowLayout(FlowLayout.CENTER, 20, 20));
+//        setLayout(new FlowLayout(FlowLayout.CENTER, 20, 20));
+        setLayout(null);
+        
+        
+        userName = new JLabel();
+        userName.setBounds(150, 30, 400, 40);
+        userName.setText("Welcome , "+gamerName);
+        userName.setFont(new Font("Arial", Font.BOLD, 24));
+        
+        
+//        JLabel welcomeLabel = new JLabel("Welcome, " + userName);
+//        welcomeLabel.setAlignmentX(Component.CENTER_ALIGNMENT); // Centers horizontally
+//        welcomeLabel.setFont(new Font("Arial", Font.BOLD, 18));
+
+        // 2. The Label Below (Instruction/Status)
+        instructionLabel = new JLabel("Get ready to solve! You are at Level 1");
+        instructionLabel.setBounds(150, 60, 400, 40);
+        
 
         questionLabel = new JLabel();
+        questionLabel.setBounds(100, 100, 100, 40);
         questionLabel.setFont(new Font("Arial", Font.BOLD, 24));
         
         answerField = new JTextField(5);
+        answerField.setBounds(200, 100, 150, 40);
         answerField.setFont(new Font("Arial", Font.PLAIN, 24));
+        answerField.requestFocus(); 
 
-        JButton checkButton = new JButton("Check Answer");
         resultLabel = new JLabel("Enter your answer!");
+        resultLabel.setBounds(200, 150, 200, 40);
         resultLabel.setFont(new Font("Arial", Font.ITALIC, 18));
-
+        
+        JButton checkButton = new JButton("Check Answer");
+        checkButton.setBounds(200, 200, 150, 40);
+        
+        
+        add(userName);
+        add(Box.createVerticalStrut(10));
+        add(instructionLabel);
+        add(Box.createVerticalStrut(10));
         add(questionLabel);
         add(answerField);
         add(checkButton);
@@ -39,6 +67,7 @@ public class MathGamePanel extends JPanel{
         generateNewQuestion();
 
         checkButton.addActionListener(e -> checkAnswer());
+        answerField.addActionListener(e -> checkAnswer());
         
         setVisible(true);
         
@@ -71,11 +100,13 @@ public class MathGamePanel extends JPanel{
         try {
             int userAnswer = Integer.parseInt(answerField.getText());
             if (userAnswer == correctAnswer) {
-                resultLabel.setText("CORRECT! 🎉");
+                resultLabel.setText("CORRECT!");
                 resultLabel.setForeground(new Color(0, 150, 0));
                 generateNewQuestion(); // Give them a new one!
             } else {
-                resultLabel.setText("Try again! You are at level 1");
+                resultLabel.setText("Try again! Dont stop");
+                answerField.setText("");
+                answerField.requestFocus(); 
                 resultLabel.setForeground(Color.RED);
             }
         } catch (NumberFormatException ex) {

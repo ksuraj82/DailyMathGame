@@ -14,7 +14,7 @@ public class LoginWindow{
 
         try {
             // 1. Establish Connection
-            Connection conn = DriverManager.getConnection("jdbc:postgresql://192.168.1.60:5432/webuser", "postgres", "postgres");
+            Connection conn = DriverManager.getConnection("jdbc:postgresql://host:port/DBname", "username", "password");
 
             // 2. Prepare SQL Query
             String sql = "SELECT * FROM user_details WHERE username=? AND password=?";
@@ -45,5 +45,14 @@ public class LoginWindow{
     	return userLogin;
     }
 	
+    
+    public boolean getLogin(JTextField uservalue) {
+    	if(uservalue.getText().isEmpty() || uservalue.getText().isBlank()) {
+    		this.userLogin=false;
+    	}
+    	else 
+    		this.userLogin=true;
+    	return userLogin;
+    }
 
 }
