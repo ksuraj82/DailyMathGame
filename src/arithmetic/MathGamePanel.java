@@ -25,7 +25,7 @@ public class MathGamePanel extends JPanel{
         
         userName = new JLabel();
         userName.setBounds(150, 30, 400, 40);
-        userName.setText("Welcome , "+gamerName);
+        userName.setText("Welcome , "+ gamerName);
         userName.setFont(new Font("Arial", Font.BOLD, 24));
         
         
@@ -39,13 +39,13 @@ public class MathGamePanel extends JPanel{
         
 
         questionLabel = new JLabel();
-        questionLabel.setBounds(100, 100, 100, 40);
+        questionLabel.setBounds(50, 100, 150, 40);
         questionLabel.setFont(new Font("Arial", Font.BOLD, 24));
         
         answerField = new JTextField(5);
         answerField.setBounds(200, 100, 150, 40);
         answerField.setFont(new Font("Arial", Font.PLAIN, 24));
-        answerField.requestFocus(); 
+        
 
         resultLabel = new JLabel("Enter your answer!");
         resultLabel.setBounds(200, 150, 200, 40);
@@ -66,10 +66,28 @@ public class MathGamePanel extends JPanel{
 
         generateNewQuestion();
 
-        checkButton.addActionListener(e -> checkAnswer());
-        answerField.addActionListener(e -> checkAnswer());
+       
         
         setVisible(true);
+        answerField.setEnabled(true);
+        answerField.setEditable(true);
+        answerField.setFocusable(true);
+        
+        checkButton.addActionListener(e -> checkAnswer());
+        answerField.addActionListener(e -> checkAnswer());
+//        answerField.requestFocus();
+        
+        answerField.addAncestorListener(new javax.swing.event.AncestorListener() {
+            @Override
+            public void ancestorAdded(javax.swing.event.AncestorEvent event) {
+                // Use requestFocusInWindow for better reliability in Swing
+                answerField.requestFocusInWindow();
+            }
+
+            @Override public void ancestorRemoved(javax.swing.event.AncestorEvent event) {}
+            @Override public void ancestorMoved(javax.swing.event.AncestorEvent event) {}
+        });
+        
         
     }
 
@@ -94,6 +112,7 @@ public class MathGamePanel extends JPanel{
         }
         questionLabel.setText(num1 + " " + operator + " " + num2 + " = ");
         answerField.setText("");
+
     }
 
     private void checkAnswer() {
@@ -105,8 +124,7 @@ public class MathGamePanel extends JPanel{
                 generateNewQuestion(); // Give them a new one!
             } else {
                 resultLabel.setText("Try again! Dont stop");
-                answerField.setText("");
-                answerField.requestFocus(); 
+                answerField.setText(""); 
                 resultLabel.setForeground(Color.RED);
             }
         } catch (NumberFormatException ex) {
