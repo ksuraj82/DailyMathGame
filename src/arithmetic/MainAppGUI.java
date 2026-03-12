@@ -16,17 +16,17 @@ public class MainAppGUI {
 		
 		
 		JFrame loginwindow = new JFrame("Login");
-		loginwindow.setSize(300, 200);
+		loginwindow.setSize(350, 200);
 
 		
 
         // UI Components
-        JLabel userLabel = new JLabel("Username:");
-        userLabel.setBounds(20, 20, 80, 25);
+        JLabel userLabel = new JLabel("Gamer's Name:");
+        userLabel.setBounds(20, 20, 100, 25);
         loginwindow.add(userLabel);
 
         JTextField userField = new JTextField();
-        userField.setBounds(100, 20, 160, 25);
+        userField.setBounds(120, 20, 160, 25);
         loginwindow.add(userField);
 
 //        JLabel passLabel = new JLabel("Password:");
@@ -67,9 +67,9 @@ public class MainAppGUI {
             public void actionPerformed(ActionEvent e) {
 //            	userLogin=checkuser.getLogin(userField,passField);
             	userLogin=checkuser.getLogin(userField);
-            	System.out.println(userLogin);
+//            	System.out.println(userLogin);
             	if(userLogin==true) {
-                	System.out.print(userLogin);
+//                	System.out.print(userLogin);
                 	loginwindow.dispose();
             		loginwindow.setVisible(false);
             		new GameWindow().gameWindow(userField.getText());
@@ -81,6 +81,8 @@ public class MainAppGUI {
         loginwindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		loginwindow.setLayout(null);
         loginwindow.setVisible(true);
+        loginwindow.setLocationRelativeTo(null);
+        loginwindow.setResizable(false);
 
 
 	}

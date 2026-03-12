@@ -13,6 +13,10 @@
 # Folder
 bin/
 .settings/
+output/
+output/runtime/
+input/
+
 
 # Package Files #
 *.jar

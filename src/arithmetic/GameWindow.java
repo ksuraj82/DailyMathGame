@@ -7,7 +7,9 @@ public class GameWindow {
 	public void gameWindow(String gamerName) {
     JFrame gameFrame = new JFrame("Math Game Wizard");
     gameFrame.setSize(500,400);
+    gameFrame.setResizable(false); 
     gameFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
 
     JTabbedPane tabs = new JTabbedPane();
 
@@ -22,6 +24,8 @@ public class GameWindow {
     gameFrame.add(tabs);
     gameFrame.setLocationRelativeTo(null); // Center on screen
     gameFrame.setVisible(true);
+    
+    
     
 	}
 
