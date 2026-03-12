@@ -7,15 +7,18 @@ A Java-based math game built in Eclipse.
 Version : 1.0.0
 Date: 12-03-2026
 Feature: 
-1. Portable - ready to run app with no configuration change is required.
+1. Portable - ready to run app with no prerequisite.
 2. Math Games: Addtion, Subtraction , division and multiplication with endless attempt.
 
 ## 🚀 Download Executable
 You can download the latest version of the game here:
 
 
-Windows executable file:
+Windows executable file: (No installation required)
+Size: 53.9 MB
+Uploaded on external drive storage and accessible from https://sl1nk.com/DailyMathGame
 
+If facing any issue in using the above URL, you can build your own game using below steps and add new features as required.
 
 ## 🛠️ How to Build the Package
 If you want to create the executable (`.jar` file) manually, use the following command in your terminal:
@@ -34,6 +37,9 @@ If you want to create the executable (`.jar` file) manually, use the following c
 >>jpackage.exe --type app-image --dest "D:/EclipseWorkspace/ProjectDailyGame/output" --input "D:/EclipseWorkspace/ProjectDailyGame/input" --name "DailyMathGame" 
 --main-jar "DailyMath.jar" --win-console --main-class arithmetic.MainAppGUI --icon "D:/CodingFiles/Calculator/favicon.ico" --vendor "Yout_name" 
 --app-version "1.0.0"
+
+
+
 
 
 
